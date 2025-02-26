@@ -67,3 +67,24 @@ should NOT be committed to VSC
 #### Terraform Directory
 
 `.terraform` directory contains binaries of terraform providers.
+
+### Terraform Cloud
+
+Create an account on https://terraform.io.
+Create an organization (requires a unique naming).
+Inside the organization create a new Workspace by choosing "CLI-Driven Workflow" and give it a name.
+
+After the workspace is created, we get the follwing window:
+![Terraform-Cloud](assets/terraform-cloud-1.png)
+
+1. Run `terraform login`
+    1. this will prompt a web page to login in terraform cloud;
+    2. After login it requires the creation of a token with expiration time
+    3. copy the create token and paste it in the terminal
+    4. login complete
+
+2. Login to Terraform Cloud and go to your workspace
+    1. search variables
+    2. create `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION` environment variables
+    3. return to your local project and execute `terraform apply --auto-approve`
+    4. when the execution is completed, you can see in your workspace the resources that have been created
