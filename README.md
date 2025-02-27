@@ -153,3 +153,15 @@ Terraform Variables - those that you would normally set in your tfvars file
         - The `terraform.tfvars.json` file, if present.
         - Any `*.auto.tfvars` or `*.auto.tfvars.json` files, processed in lexical order of their filenames.
         - Any `-var` and `-var-file` options on the command line, in the order they are provided. (This includes variables set by an HCP Terraform workspace.)
+
+## Configuration Drift
+
+### Terraform Import
+[Terraform Import](https://developer.hashicorp.com/terraform/cli/import)
+
+Terraform import can be used to recover resource's configuration, it won't work for all resources.
+Reference Terraform providers documentation for supported resources.
+
+### Fix manual configuration
+
+If someone deletes manually a cloud resource, we can run `terraform plan` to let terraform put back the infrastructure into the expected state.
