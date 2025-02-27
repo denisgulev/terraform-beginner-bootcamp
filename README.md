@@ -165,3 +165,11 @@ Reference Terraform providers documentation for supported resources.
 ### Fix manual configuration
 
 If someone deletes manually a cloud resource, we can run `terraform plan` to let terraform put back the infrastructure into the expected state.
+
+
+## Terraform Module
+
+[Terraform Module](https://developer.hashicorp.com/terraform/language/modules/sources)
+
+We can pass variables to a module.
+Each module has to declare the variables in its own `variables.tf` file.

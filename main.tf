@@ -1,7 +1,15 @@
-resource "aws_s3_bucket" "web-hosting" {
-  bucket = var.bucket_name
-
-  tags = {
-    UserUuid = var.user_uuid
+terraform {
+  cloud {
+    organization = "Terraform-bootcamp-aws"
+    workspaces {
+      name = "Terraform-1"
+    }
   }
+}
+
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+
+  user_uuid   = var.user_uuid
+  bucket_name = var.bucket_name
 }
