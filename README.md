@@ -88,3 +88,22 @@ After the workspace is created, we get the follwing window:
     2. create `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_DEFAULT_REGION` environment variables
     3. return to your local project and execute `terraform apply --auto-approve`
     4. when the execution is completed, you can see in your workspace the resources that have been created
+
+
+### Deploy a static page using S3 and CloudFront
+
+1. create an S3 bucket from AWS console
+2. create an html file with whatever content
+3. copy the html file to s3
+    - `aws s3 cp public/index.html s3://hkyghbeqb6wku7mzw9au7gck3zjz2xnk/index.html`
+    - go to S3 and verify the file is uploaded correctly
+4. to serve this file on the internet, we will create a CloudFront distribution
+    - go to AWS CloudFront
+    - on the left side menu click on "Origin Access" and create a new control setting 
+    - create a new distribution and:
+        - select the S3 bucket where we uploaded our file
+        - check "origin access control" option and select the "origin access" created before
+        - copy the policy that pops up and paste it in the s3 bucket under Permissions->Bucket Policy
+        - disable WAF (not needed atm)
+        - leave a description for the distribution
+    - once the distribution is created, we can use its "Distribution domain name" to access the static html file 
