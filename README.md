@@ -106,4 +106,50 @@ After the workspace is created, we get the follwing window:
         - copy the policy that pops up and paste it in the s3 bucket under Permissions->Bucket Policy
         - disable WAF (not needed atm)
         - leave a description for the distribution
-    - once the distribution is created, we can use its "Distribution domain name" to access the static html file 
+    - once the distribution is created, we can use its "Distribution domain name" to access the static html file
+
+
+### Root Module Structure for TF
+
+The structure of the root module folder is as follows:
+
+[Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
+
+```
+PROJECT_ROOT
+|
+|-- variables.tf        # stores input variables
+|-- main.tf
+|-- outputs.tf          # stores outputs
+|-- providers.tf        # define providers and their configurations
+|-- terraform.tfvars    # variables we want to load into terraform project
+|-- README.md           # ** required
+```
+
+
+### Terraform Cloud Variables
+
+[Tarraform Input Variables](https://developer.hashicorp.com/terraform/language/values/variables)
+
+In terraform we can set two kind of variables:
+
+Enviroment Variables - those you would set in your bash terminal eg. AWS credentials
+Terraform Variables - those that you would normally set in your tfvars file
+
+### Loading Terraform Variables
+
+1. **var flag**
+    - `-var` flag to set an input variable or override a variable in the tfvars file eg. `terraform -var user_ud="my-user_id"`
+2. **var-file flag**
+    - this flag allows to specify which `*.tfvars` file to use
+3. **terraform.tvfars**
+    - This is the default file to load in terraform variables
+4. **auto.tfvars**
+    - files ending in `auto.tfvars`
+5. **order of terraform variables**
+    - Terraform loads variables in the following order, with later sources taking precedence over earlier ones:
+        - Environment variables
+        - The `terraform.tfvars` file, if present.
+        - The `terraform.tfvars.json` file, if present.
+        - Any `*.auto.tfvars` or `*.auto.tfvars.json` files, processed in lexical order of their filenames.
+        - Any `-var` and `-var-file` options on the command line, in the order they are provided. (This includes variables set by an HCP Terraform workspace.)
