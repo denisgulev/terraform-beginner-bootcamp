@@ -173,3 +173,8 @@ If someone deletes manually a cloud resource, we can run `terraform plan` to let
 
 We can pass variables to a module.
 Each module has to declare the variables in its own `variables.tf` file.
+
+## Terraform S3 configuration
+
+[S3 Bucket Configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration)
+
