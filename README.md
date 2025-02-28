@@ -178,3 +178,21 @@ Each module has to declare the variables in its own `variables.tf` file.
 
 [S3 Bucket Configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration)
 
+## CDN Implementation
+
+- CloudFront Distribution
+- CloudFront OAC
+- Bucket Policy
+
+### Terraform Data Sources
+
+[https://developer.hashicorp.com/terraform/language/data-sources](https://developer.hashicorp.com/terraform/language/data-sources)
+
+Data sources allow Terraform to use information defined outside of Terraform.
+Useful when we want to reference cloud resources.
+
+### Terraform Locals
+
+[Terraform Locals](https://developer.hashicorp.com/terraform/language/values/locals)
+
+A local value assigns a name to an expression, so you can use the name multiple times within a module instead of repeating the expression.
