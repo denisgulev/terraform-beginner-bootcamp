@@ -43,6 +43,18 @@ resource "aws_s3_object" "index_html" {
   }
 }
 
+resource "aws_s3_object" "upload_assets" {
+  for_each = fileset("${path.root}/assets", "*.{jpg,png,gif}")
+  bucket   = aws_s3_bucket.web-hosting.bucket
+  key      = "assets/${each.value}"
+  source   = "${path.root}/assets/${each.value}"
+  etag     = filemd5("${path.root}/assets/${each.value}")
+  lifecycle {
+    replace_triggered_by = [terraform_data.content_version.output]
+    ignore_changes       = [etag]
+  }
+}
+
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_object
 resource "aws_s3_object" "error_html" {
   count        = fileexists("${path.root}/public/error.html") ? 1 : 0
