@@ -1,5 +1,6 @@
 output "bucket_name" {
-  value = aws_s3_bucket.web-hosting.bucket
+  value     = aws_s3_bucket.web-hosting.bucket
+  sensitive = true
 }
 
 output "s3_website_endpoint" {
