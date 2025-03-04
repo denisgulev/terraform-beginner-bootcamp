@@ -266,7 +266,7 @@ resource "aws_instance" "web" {
 Threats:
 1. Unauthorized access
     ex. every code change triggers a deploy process; if by any chance some bad actore gains access to code repository, he can push malicious code to 
-        out prod environments
+        out prod environments  
 
 2. Terraform State file is very important
     limit the access to Terraform Cloud to limited and trusted amount of people
