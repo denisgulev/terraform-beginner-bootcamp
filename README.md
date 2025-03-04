@@ -89,6 +89,10 @@ After the workspace is created, we get the follwing window:
     3. return to your local project and execute `terraform apply --auto-approve`
     4. when the execution is completed, you can see in your workspace the resources that have been created
 
+#### Attach a VCS to Terraform Cloud Workspace
+
+When we attach a VCS repository to our TF Cloud Workspace we can setup automatic triggers of "terraform plan" and "terraform apply" on events happening at VCS level (ex. commits, PR, etc...)
+
 
 ### Deploy a static page using S3 and CloudFront
 
@@ -255,3 +259,23 @@ resource "aws_instance" "web" {
 }
 ```
 [Remote-Exec](https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec)
+
+
+## Terraform Security Best Practices
+
+Threats:
+1. Unauthorized access
+    ex. every code change triggers a deploy process; if by any chance some bad actore gains access to code repository, he can push malicious code to 
+        out prod environments
+
+2. Terraform State file is very important
+    limit the access to Terraform Cloud to limited and trusted amount of people
+
+
+#### Best Practices
+
+1. Limit access to privileged and trusted users
+2. Most recent version of TF
+3. Use only VCS repositories that you trust
+4. Use only trusted TF Modules
+5. Limit access to VCS repositories
